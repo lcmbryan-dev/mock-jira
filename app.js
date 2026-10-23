@@ -3,7 +3,7 @@
 const STATUSES = ["To Do", "In Progress", "In Review", "Done"];
 const TYPES = ["Story", "Bug", "Task", "Epic"];
 const PRIORITIES = ["Highest", "High", "Medium", "Low", "Lowest"];
-const USERS = ["Unassigned", "Alice", "Bob", "Carol", "Dave"];
+const USERS = ["Unassigned", "Alice", "Bob", "Carol", "Dave", "Bryan"];
 const PROJECT_KEY = "MJ";
 const STORAGE_KEY = "mock-jira-v1";
 
@@ -18,7 +18,7 @@ function seed() {
     comments: [], created: now, updated: now,
   });
   return {
-    nextId: 9,
+    nextId: 10,
     issues: [
       mk(1, "Set up CI pipeline", "Task", "Done", "High", "Alice", 3, ["devops"], "Run lint and tests on every push."),
       mk(2, "User login page", "Story", "In Review", "High", "Bob", 5, ["frontend", "auth"], "As a user I can sign in with email and password."),
@@ -28,6 +28,7 @@ function seed() {
       mk(6, "Add password reset email", "Story", "To Do", "Medium", "Unassigned", 3, ["auth"], ""),
       mk(7, "Update README with setup steps", "Task", "To Do", "Low", "Alice", 1, ["docs"], ""),
       mk(8, "Typo on pricing page", "Bug", "To Do", "Lowest", "Bob", 1, ["frontend"], ""),
+      mk(9, "Testing creation of Jira", "Bug", "To Do", "Medium", "Bryan", 4, ["QA"], "This is first test"),
     ],
   };
 }

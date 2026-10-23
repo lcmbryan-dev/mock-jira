@@ -1,4 +1,4 @@
-# Mock Jira
+# Story Board
 
 A small, dependency-free Jira-style issue tracker that runs entirely in the browser.
 Data is stored in your browser's `localStorage`, so there is no server or sign-up.

@@ -3,17 +3,36 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mock Jira</title>
+  <title>Story Board</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Plus+Jakarta+Sans:wght@400;600;800&family=Space+Grotesk:wght@500;700&display=swap">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="themes.css">
+  <script>
+    // Apply the saved theme (or ?theme=name) before first paint to avoid a flash.
+    try {
+      var t = new URLSearchParams(location.search).get("theme") || localStorage.getItem("mock-jira-theme");
+      if (t && t !== "classic") document.documentElement.dataset.theme = t;
+    } catch (e) { /* storage unavailable */ }
+  </script>
 </head>
 <body>
   <header class="topbar">
-    <div class="brand">&#9638; Mock Jira</div>
+    <div class="brand">&#9638; Story Board</div>
     <nav class="tabs">
       <button class="tab active" data-view="board">Board</button>
       <button class="tab" data-view="backlog">Backlog</button>
     </nav>
     <div class="spacer"></div>
+    <select id="theme" aria-label="Theme" title="Theme">
+      <option value="classic">Classic</option>
+      <option value="aurora">1 · Aurora (glass)</option>
+      <option value="linear">2 · Linear (dark)</option>
+      <option value="brutal">3 · Neo-Brutal</option>
+      <option value="bento">4 · Bento (soft)</option>
+      <option value="neon">5 · Neon Terminal</option>
+    </select>
     <button id="btn-create" class="primary">+ Create</button>
     <button id="btn-export">Export</button>
     <button id="btn-import">Import</button>

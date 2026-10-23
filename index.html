@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mock Jira</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">&#9638; Mock Jira</div>
+    <nav class="tabs">
+      <button class="tab active" data-view="board">Board</button>
+      <button class="tab" data-view="backlog">Backlog</button>
+    </nav>
+    <div class="spacer"></div>
+    <button id="btn-create" class="primary">+ Create</button>
+    <button id="btn-export">Export</button>
+    <button id="btn-import">Import</button>
+    <button id="btn-reset" class="danger-ghost">Reset</button>
+    <input type="file" id="import-file" accept="application/json" hidden>
+  </header>
+
+  <section class="filters">
+    <input id="f-search" type="search" placeholder="Search issues (key, title, label)">
+    <select id="f-type"><option value="">All types</option></select>
+    <select id="f-assignee"><option value="">All assignees</option></select>
+    <select id="f-priority"><option value="">All priorities</option></select>
+    <button id="f-clear" class="link">Clear filters</button>
+  </section>
+
+  <main id="view"></main>
+
+  <dialog id="dlg">
+    <form method="dialog" id="issue-form">
+      <div class="dlg-head">
+        <h2 id="dlg-title">Create issue</h2>
+        <button type="button" class="close" id="dlg-close" aria-label="Close">&times;</button>
+      </div>
+      <div class="dlg-body">
+        <div class="col-main">
+          <label>Summary *<input id="i-title" required maxlength="200"></label>
+          <label>Description<textarea id="i-desc" rows="6"></textarea></label>
+          <div id="comments-wrap" hidden>
+            <h3>Comments</h3>
+            <ul id="comments"></ul>
+            <div class="comment-add">
+              <textarea id="c-text" rows="2" placeholder="Add a comment..."></textarea>
+              <button type="button" id="c-add">Comment</button>
+            </div>
+          </div>
+        </div>
+        <div class="col-side">
+          <label>Status<select id="i-status"></select></label>
+          <label>Type<select id="i-type"></select></label>
+          <label>Priority<select id="i-priority"></select></label>
+          <label>Assignee<select id="i-assignee"></select></label>
+          <label>Story points<input id="i-points" type="number" min="0" max="100"></label>
+          <label>Labels (comma separated)<input id="i-labels"></label>
+          <div id="meta" class="meta"></div>
+        </div>
+      </div>
+      <div class="dlg-foot">
+        <button type="button" id="i-delete" class="danger" hidden>Delete</button>
+        <div class="spacer"></div>
+        <button type="button" id="i-cancel">Cancel</button>
+        <button type="submit" class="primary" id="i-save">Save</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="app.js"></script>
+</body>
+</html>

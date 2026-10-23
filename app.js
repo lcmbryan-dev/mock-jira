@@ -239,6 +239,14 @@ function bind() {
   fillSelect($("i-assignee"), USERS);
   refreshFilters();
 
+  $("theme").value = document.documentElement.dataset.theme || "classic";
+  $("theme").addEventListener("change", (e) => {
+    const t = e.target.value;
+    if (t === "classic") delete document.documentElement.dataset.theme;
+    else document.documentElement.dataset.theme = t;
+    try { localStorage.setItem("mock-jira-theme", t); } catch (err) { /* storage unavailable */ }
+  });
+
   document.querySelectorAll(".tab").forEach((t) => t.addEventListener("click", () => {
     document.querySelectorAll(".tab").forEach((x) => x.classList.toggle("active", x === t));
     view = t.dataset.view;

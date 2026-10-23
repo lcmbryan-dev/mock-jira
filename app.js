@@ -298,7 +298,7 @@ function bind() {
       save();
       render();
     } catch (err) {
-      alert("That file is not a valid Mock Jira export.");
+      alert("That file is not a valid Story Board export.");
     }
   });
   $("btn-reset").addEventListener("click", () => {

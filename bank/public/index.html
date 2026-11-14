@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mock Bank</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Login -->
+  <main id="login-view" class="card login" hidden>
+    <h1>&#127974; Mock Bank</h1>
+    <p class="muted">Sign in to your account</p>
+    <form id="login-form" novalidate>
+      <label>Username <input id="username" name="username" autocomplete="username" data-testid="username" required></label>
+      <label>Password <input id="password" name="password" type="password" autocomplete="current-password" data-testid="password" required></label>
+      <p id="login-error" class="error" role="alert" data-testid="login-error" hidden></p>
+      <button type="submit" class="primary" data-testid="login-submit">Sign in</button>
+    </form>
+    <p class="muted hint">Demo: <code>alice</code> / <code>Password123!</code></p>
+  </main>
+
+  <!-- Dashboard -->
+  <div id="app-view" hidden>
+    <header class="topbar">
+      <strong>&#127974; Mock Bank</strong>
+      <span class="spacer"></span>
+      <span id="welcome" data-testid="welcome"></span>
+      <button id="logout" data-testid="logout">Sign out</button>
+    </header>
+
+    <main class="layout">
+      <section>
+        <h2>Accounts</h2>
+        <ul id="accounts" class="accounts" data-testid="accounts"></ul>
+      </section>
+
+      <section class="card">
+        <h2>Transfer money</h2>
+        <form id="transfer-form" novalidate>
+          <label>From <select id="from" data-testid="transfer-from"></select></label>
+          <label>To account ID <input id="to" data-testid="transfer-to" placeholder="e.g. 1002 or 2001"></label>
+          <label>Amount <input id="amount" data-testid="transfer-amount" type="number" step="0.01" min="0.01"></label>
+          <label>Description <input id="description" data-testid="transfer-description" maxlength="60"></label>
+          <p id="transfer-msg" role="status" data-testid="transfer-msg" hidden></p>
+          <button type="submit" class="primary" data-testid="transfer-submit">Send</button>
+        </form>
+      </section>
+
+      <section class="wide">
+        <h2>Recent transactions <span id="tx-account" class="muted"></span></h2>
+        <table>
+          <thead><tr><th>Date</th><th>ID</th><th>Description</th><th>Type</th><th class="num">Amount</th><th class="num">Balance</th></tr></thead>
+          <tbody id="transactions" data-testid="transactions"></tbody>
+        </table>
+      </section>
+    </main>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>
